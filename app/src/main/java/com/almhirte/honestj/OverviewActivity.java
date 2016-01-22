@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class OverviewActivity extends AppCompatActivity
@@ -24,19 +27,26 @@ public class OverviewActivity extends AppCompatActivity
         if(v instanceof ViewGroup)
         {
             ((ViewGroup)v).removeAllViews();
+            loadDataFromDb(v);
         }
-
-        createTable(v);
-        loadDataFromDb();
     }
 
-    private void createTable(View v)
+    private void loadDataFromDb(View v)
     {
+        DataBaseMock db = new DataBaseMock();
+        while(db.hasNext())
+        {
+            String currentRecord = db.loadNextRecord();
+            TableLayout table = (TableLayout)v;
 
-    }
+            TableRow tr = new TableRow(this);
+            tr.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+            TextView textview = new TextView(this);
+            textview.setText(currentRecord);
 
-    private void loadDataFromDb()
-    {
+            table.addView(tr);
+            table.invalidate();
+        }
     }
 
 
