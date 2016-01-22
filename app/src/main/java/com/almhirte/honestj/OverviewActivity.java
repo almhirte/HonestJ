@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -34,18 +36,30 @@ public class OverviewActivity extends AppCompatActivity
     private void loadDataFromDb(View v)
     {
         DataBaseMock db = new DataBaseMock();
+
+        int i = 0;
+
         while(db.hasNext())
         {
             String currentRecord = db.loadNextRecord();
             TableLayout table = (TableLayout)v;
 
             TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT));
             TextView textview = new TextView(this);
             textview.setText(currentRecord);
-            tr.addView(textview);
+
+            ImageView imageView = new ImageView(this);
+            imageView.setImageResource(R.mipmap.ic_no_image_rect);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            imageView.setLayoutParams(lp);
+
+            tr.addView(imageView);
+            //tr.addView(textview);
+
             table.addView(tr);
-            //table.invalidate();
+            i++;
         }
     }
 
