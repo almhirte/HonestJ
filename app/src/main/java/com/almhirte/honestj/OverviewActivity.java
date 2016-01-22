@@ -43,9 +43,9 @@ public class OverviewActivity extends AppCompatActivity
             tr.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
             TextView textview = new TextView(this);
             textview.setText(currentRecord);
-
+            tr.addView(textview);
             table.addView(tr);
-            table.invalidate();
+            //table.invalidate();
         }
     }
 
