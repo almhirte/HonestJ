@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -55,8 +56,12 @@ public class OverviewActivity extends AppCompatActivity
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             imageView.setLayoutParams(lp);
 
+            ImageButton minusBtn = new ImageButton(this);
+            minusBtn.setImageResource(R.mipmap.ic_launcher);
+
+            tr.addView(minusBtn);
             tr.addView(imageView);
-            //tr.addView(textview);
+            tr.addView(textview);
 
             table.addView(tr);
             i++;
