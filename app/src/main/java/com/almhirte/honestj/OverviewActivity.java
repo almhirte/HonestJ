@@ -52,9 +52,6 @@ public class OverviewActivity extends AppCompatActivity
 
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(R.mipmap.ic_no_image_rect);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            imageView.setLayoutParams(lp);
 
             ImageButton minusBtn = new ImageButton(this);
             minusBtn.setImageResource(R.mipmap.ic_launcher);
